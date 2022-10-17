@@ -658,8 +658,8 @@ module.service('gridUtil', ['$log', '$window', '$document', '$http', '$templateC
       try {
         $animate = $injector.get('$animate');
         // See: http://brianhann.com/angular-1-4-breaking-changes-to-be-aware-of/#animate
-        if (angular.version.major > 1 || 
-          (angular.version.major === 1 && angular.version.minor > 4) || 
+        if (angular.version.major > 1 ||
+          (angular.version.major === 1 && angular.version.minor > 4) ||
           // Cortex Change as it seems to break in our application
           (angular.version.major === 1 && angular.version.minor === 4 && angular.version.dot > 1) ) {
           $animate.enabled(element, false);
@@ -675,8 +675,8 @@ module.service('gridUtil', ['$log', '$window', '$document', '$http', '$templateC
       try {
         $animate = $injector.get('$animate');
         // See: http://brianhann.com/angular-1-4-breaking-changes-to-be-aware-of/#animate
-        if (angular.version.major > 1 || 
-          (angular.version.major === 1 && angular.version.minor > 4) || 
+        if (angular.version.major > 1 ||
+          (angular.version.major === 1 && angular.version.minor > 4) ||
           // Cortex Change as it seems to break in our application
           (angular.version.major === 1 && angular.version.minor === 4 && angular.version.dot > 1) ) {
           $animate.enabled(element, true);
