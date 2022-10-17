@@ -216,6 +216,7 @@ function uiGridDirective($window, gridUtil, uiGridConstants) {
           var sizeCheckInterval = 100; // ms
           var maxSizeChecks = 20; // 2 seconds total
           var sizeChecks = 0;
+          var checkSizeId;
 
           // Setup (event listeners) the grid
           setup();
@@ -231,10 +232,11 @@ function uiGridDirective($window, gridUtil, uiGridConstants) {
 
           /*-- Methods --*/
 
-          function checkSize() {
+          function checkSize()  {
             // If the grid has no width and we haven't checked more than <maxSizeChecks> times, check again in <sizeCheckInterval> milliseconds
+           
             if ($elm[0].offsetWidth <= 0 && sizeChecks < maxSizeChecks) {
-              setTimeout(checkSize, sizeCheckInterval);
+              checkSizeId = setTimeout(checkSize, sizeCheckInterval);
               sizeChecks++;
             } else {
               $scope.$applyAsync(init);
@@ -253,6 +255,8 @@ function uiGridDirective($window, gridUtil, uiGridConstants) {
               angular.element($window).off('resize', gridResize);
               deregisterLeftWatcher();
               deregisterRightWatcher();
+              // clear the checksize timeout
+              clearTimeout(checkSizeId);
             });
 
             // If we add a left container after render, we need to watch and react

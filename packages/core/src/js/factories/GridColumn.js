@@ -537,7 +537,8 @@ angular.module('ui.grid')
 
       if (!isValidWidthValue(minOrMaxWidth)) {
         // Sets default minWidth and maxWidth values
-        self[name] = ((name === 'minWidth') ? 30 : 9000);
+        // Cortex : change the default min width from 30 to 100.
+        self[name] = ((name === 'minWidth') ? 100 : 9000);
       } else if (angular.isString(minOrMaxWidth)) {
         if (minOrMaxWidth.match(/^(\d+)$/)) {
           self[name] = parseInt(minOrMaxWidth.match(/^(\d+)$/)[1], 10);

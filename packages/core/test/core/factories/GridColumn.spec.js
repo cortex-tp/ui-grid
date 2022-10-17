@@ -804,7 +804,7 @@ describe('GridColumn factory', function () {
         col.grid.options.minimumColumnSize = width;
         colDef[minOrMax] = width;
         col.updateColumnDef(colDef);
-        expect(col[minOrMax]).toBe(minOrMax === 'minWidth' ? 30 : 9000);
+        expect(col[minOrMax]).toBe(minOrMax === 'minWidth' ? 100 : 9000);
       };
     }
   });

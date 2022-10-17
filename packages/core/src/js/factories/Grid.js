@@ -1283,6 +1283,11 @@ angular.module('ui.grid')
     for (var i = 0; i < newRawData.length; i++) {
       var newRow = self.processRowBuilders(new GridRow(newRawData[i], i + existingRowCount, self));
 
+      // CORTEX: make new rowhashmap if it doesn't exist yet
+      if (self.rowHashMap == undefined) {
+        self.rowHashMap = self.createRowHashMap();
+      }
+
       if (self.options.enableRowHashing) {
         var found = self.rowHashMap.get(newRow.entity);
         if (found) {
@@ -1291,6 +1296,9 @@ angular.module('ui.grid')
       }
 
       self.rows.push(newRow);
+
+      // CORTEX: Make sure that the row is added to the hash map
+      self.rowHashMap.put(newRow.entity, newRow);
     }
   };
 

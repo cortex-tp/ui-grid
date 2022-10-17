@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       dist: 'dist',
       site: process.env.TRAVIS ? 'ui-grid.info' : '127.0.0.1:<%= connect.docs.options.port %>',
       banner: '/*!\n' +
-        ' * <%= pkg.title || pkg.name %> - v<%= version %> - ' +
+        ' * <%= pkg.title || pkg.name %> - v 4.11.1-cortex - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
         '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
         ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
