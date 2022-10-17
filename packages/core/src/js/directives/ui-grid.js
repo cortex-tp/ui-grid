@@ -234,7 +234,6 @@ function uiGridDirective($window, gridUtil, uiGridConstants) {
 
           function checkSize()  {
             // If the grid has no width and we haven't checked more than <maxSizeChecks> times, check again in <sizeCheckInterval> milliseconds
-           
             if ($elm[0].offsetWidth <= 0 && sizeChecks < maxSizeChecks) {
               checkSizeId = setTimeout(checkSize, sizeCheckInterval);
               sizeChecks++;
