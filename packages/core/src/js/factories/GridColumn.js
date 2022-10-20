@@ -574,13 +574,14 @@ angular.module('ui.grid')
      * if you have long values in your cells), if a function then that function is called
      * passing in the row and the col `cellTooltip( row, col )`, and the return value is shown in the tooltip,
      * if it is a static string then displays that static string.
+     * Cortex change to default header tooltips to be show if not explicitly turned off.
      *
-     * Defaults to false
+     * Defaults to true
      *
      */
-    if ( typeof(colDef.cellTooltip) === 'undefined' || colDef.cellTooltip === false ) {
+    if (colDef.cellTooltip === false ) {
       self.cellTooltip = false;
-    } else if ( colDef.cellTooltip === true ) {
+    } else if (typeof(colDef.cellTooltip) === 'undefined' ||  colDef.cellTooltip === true ) {
       self.cellTooltip = function(row, col) {
         return self.grid.getCellValue( row, col );
       };
@@ -601,14 +602,15 @@ angular.module('ui.grid')
      * if you have long values in your headers), if a function then that function is called
      * passing in the row and the col `headerTooltip( col )`, and the return value is shown in the tooltip,
      * if a static string then shows that static string.
+     * Cortex change to default header tooltips to be show if not explicitly turned off.
      *
-     * Defaults to false
+     * Defaults to true
      *
      */
-    if ( typeof(colDef.headerTooltip) === 'undefined' || colDef.headerTooltip === false ) {
+    if (colDef.headerTooltip === false ) {
       self.headerTooltip = false;
     }
-    else if ( colDef.headerTooltip === true ) {
+    else if (  typeof(colDef.headerTooltip) === 'undefined' || colDef.headerTooltip === true ) {
       self.headerTooltip = function(col) {
         return col.displayName;
       };

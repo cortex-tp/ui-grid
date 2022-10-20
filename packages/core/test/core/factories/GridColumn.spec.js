@@ -635,10 +635,17 @@ describe('GridColumn factory', function () {
     });
 
     describe('cellTooltip', function() {
-      it('should be set to false when it is undefined', function() {
+      it('should be set to true when it is undefined', function() {
         colDef.cellTooltip = undefined;
         col.updateColumnDef(colDef);
-        expect(col.cellTooltip).toBe(false);
+        expect(angular.isFunction(col.cellTooltip)).toBe(true);
+
+        spyOn(col.grid, 'getCellValue').and.callFake(angular.noop);
+        col.cellTooltip(null, col);
+
+        expect(col.grid.getCellValue).toHaveBeenCalled();
+
+        col.grid.getCellValue.calls.reset();
       });
       it('should stay false when the user passed false', function() {
         colDef.cellTooltip = false;
@@ -672,10 +679,11 @@ describe('GridColumn factory', function () {
     });
 
     describe('headerTooltip', function() {
-      it('should be set to false when it is undefined', function() {
+      it('should be set to true when it is undefined', function() {
         colDef.headerTooltip = undefined;
         col.updateColumnDef(colDef);
-        expect(col.headerTooltip).toBe(false);
+        expect(angular.isFunction(col.headerTooltip)).toBe(true);
+        expect(col.headerTooltip(col)).toEqual(col.displayName);
       });
       it('should stay false when the user passed false', function() {
         colDef.headerTooltip = false;

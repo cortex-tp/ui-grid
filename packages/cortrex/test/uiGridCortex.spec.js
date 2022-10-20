@@ -9,6 +9,7 @@ describe('ui.grid.cortexResizeGrid', function () {
 	];
 
 	beforeEach(module('ui.grid'));
+	beforeEach(module('ui.grid.selection'));
 	beforeEach(module('ui.grid.cortex'));
 	beforeEach(inject(function (_$compile_, $rootScope, _uiGridConstants_) {
 		$scope = $rootScope;
