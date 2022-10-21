@@ -2559,16 +2559,20 @@ angular.module('ui.grid')
      * @returns {promise} a promise that is resolved after any scrolling is finished
      */
     Grid.prototype.scrollTo = function (rowEntity, colDef) {
-      var gridRow = null, gridCol = null;
+      var self = this;
+      var promise = $timeout(function () {
+          var gridRow = null, gridCol = null;
 
-      if (rowEntity !== null && typeof(rowEntity) !== 'undefined' ) {
-        gridRow = this.getRow(rowEntity);
-      }
+          if (rowEntity !== null && typeof (rowEntity) !== 'undefined') {
+              gridRow = self.getRow(rowEntity);
+          }
 
-      if (colDef !== null && typeof(colDef) !== 'undefined' ) {
-        gridCol = this.getColumn(colDef.name ? colDef.name : colDef.field);
-      }
-      return this.scrollToIfNecessary(gridRow, gridCol);
+          if (colDef !== null && typeof (colDef) !== 'undefined') {
+              gridCol = self.getColumn(colDef.name ? colDef.name : colDef.field);
+          }
+          return self.scrollToIfNecessary(gridRow, gridCol);
+      });
+      return promise;
     };
 
   /**
