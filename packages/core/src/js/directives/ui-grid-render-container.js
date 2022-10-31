@@ -152,7 +152,7 @@
 									var reHCHeight = document.querySelector(
 										'.grid' + uiGridCtrl.grid.id + ' .ui-grid-render-container-body .ui-grid-header-canvas');
 
-									if (reHCHeight) {
+									if (reHCHeight > renderContainer.explicitHeaderCanvasHeight) {
 										renderContainer.explicitHeaderCanvasHeight = reHCHeight.offsetHeight;
 									}
 
